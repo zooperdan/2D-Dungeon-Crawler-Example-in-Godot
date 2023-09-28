@@ -54,23 +54,24 @@ var map = {
 
 func _ready():
 	loadJSON()
-	VisualServer.set_default_clear_color(Color(0.0,0.0,0.0,1.0))
+	RenderingServer.set_default_clear_color(Color(0.0,0.0,0.0,1.0))
 	atlasTexture = preload("res://Atlases/atlas.png")
 	
-func get_cropped_texture(texture: Texture, region: Rect2) -> Texture:
+func get_cropped_texture(texture: Texture2D, region: Rect2) -> Texture2D:
 	var result := AtlasTexture.new()
 	result.set_atlas(texture)
-	result.set_region(region)
+	result.region = region
 	return result
 	
 func loadJSON():
 
-	var file = File.new()
-	file.open("res://Atlases/atlas.json", file.READ)
+	var file = FileAccess.open("res://Atlases/atlas.json", FileAccess.READ)
 
 	var json = file.get_as_text()
 
-	var data = JSON.parse(json).result
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(json)
+	var data = test_json_conv.get_data()
 
 	atlasData = {
 		version = data.version,
@@ -104,8 +105,8 @@ func _input(event):
 func _draw():
 	renderDungeon()
 		
-func _process(delta):
-	update()	
+func _process(_delta):
+	queue_redraw()
 	
 func canMove(pos: Vector2):
 	
@@ -128,8 +129,8 @@ func invertDirection(direction:int):
 func getDestPos(direction:int):
 	
 	var vec = Vector2(
-		sin(deg2rad(direction*90)),
-		-cos(deg2rad(direction*90))
+		sin(deg_to_rad(direction*90)),
+		-cos(deg_to_rad(direction*90))
 	)
 
 	vec.x = vec.x + party.x
@@ -198,11 +199,11 @@ func getPlayerDirectionVectorOffsets(x, z):
 
 func getTileFromAtlas(layerId, tileType, x, z):
 
-	if not atlasData.layers[layerId]: return null
+	if not atlasData.layers.has(layerId): return null
 
 	var layer = atlasData.layers[layerId]
 	
-	if not layer: return false
+	if layer == null: return false
 	
 	for i in range(0, layer.tiles.size()):
 		var tile = layer.tiles[i]

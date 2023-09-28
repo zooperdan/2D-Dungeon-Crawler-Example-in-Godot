@@ -1,0 +1,16 @@
+2a60927148abd1d33b818b535e306557
+::res://::1695931792
+default_env.tres::Environment::-1::1695931778::0::1::::<><>::
+icon.png::CompressedTexture2D::1769683620667581213::1681486571::1695931793::1::::<><>::
+Main.gd::GDScript::-1::1695931778::0::1::::<>Node2D<>::
+Main.tscn::PackedScene::-1::1695931778::0::1::::<><>::res://Main.gd
+README.md::TextFile::-1::1681486571::0::1::::<><>::
+::res://Atlases/::1681486571
+atlas.json::JSON::-1::1681486571::0::1::::<><>::
+atlas.png::CompressedTexture2D::5700982928311038861::1681486571::1695931793::1::::<><>::
+::res://Export/::1681486571
+2D_dungeon_crawler_example_in_Godot.apple-touch-icon.png::CompressedTexture2D::1766927537477224796::1681486571::1695931793::1::::<><>::
+2D_dungeon_crawler_example_in_Godot.icon.png::CompressedTexture2D::8519744552054044547::1681486571::1695931793::1::::<><>::
+2D_dungeon_crawler_example_in_Godot.png::CompressedTexture2D::3427781243305787834::1681486571::1695931793::1::::<><>::
+::res://Screenshot/::1681486571
+screenshot.jpg::CompressedTexture2D::4832121892903154392::1681486571::1695931793::1::::<><>::
